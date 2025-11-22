@@ -2,6 +2,7 @@ import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Download, Apple, Monitor, Laptop, Check } from "lucide-react";
+import { ThemeToggle } from "@/components/ThemeToggle";
 
 const Index = () => {
   const version = "2.1.0";
@@ -68,6 +69,11 @@ const Index = () => {
 
   return (
     <div className="min-h-screen bg-gradient-hero">
+      {/* Theme Toggle */}
+      <div className="fixed top-6 right-6 z-50">
+        <ThemeToggle />
+      </div>
+      
       {/* Hero Section */}
       <section className="container mx-auto px-4 pt-20 pb-16 text-center animate-fade-in">
         <Badge variant="secondary" className="mb-6 text-sm">
