@@ -64,7 +64,7 @@ const Index = () => {
       <div className="absolute inset-0 z-0 bg-[linear-gradient(to_right,#fafafa,transparent_1px),linear-gradient(to_bottom,#fafafa33_1px,transparent_1px)] bg-[size:20px_20px] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,#000_70%,transparent_100%)] pointer-events-none" />
         {/* Hero Section */}
         <section className="w-full text-center z-10 relative pt-16 px-4">
-          <h1 className="text-md md:text-8xl font-bold mb-4 text-[#fafafa] tracking-tight font-luckiest">
+          <h1 className="text-5xl md:text-8xl font-bold mb-4 text-[#fafafa] tracking-tight font-luckiest">
             K N O W L I A
           </h1>
           <span {...{variant: "secondary", className: "mb-6 text-sm inline-block text-[#fafafa] bg-[#3a6ea4] px-3 py-1 rounded-full mt-2"} as any}>
