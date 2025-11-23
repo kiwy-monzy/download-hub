@@ -8,7 +8,7 @@ All colors MUST be HSL.
 
 @layer base {
   :root {
-    --background: 0 0% 100%;
+    --background: "#1a1a1a";
     --foreground: 215 25% 15%;
 
     --card: 0 0% 100%;
@@ -118,5 +118,9 @@ All colors MUST be HSL.
 
   body {
     @apply bg-background text-foreground;
+  }
+  
+  .font-luckiest {
+    font-family: 'Luckiest Guy', cursive;
   }
 }
