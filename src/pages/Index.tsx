@@ -58,10 +58,30 @@ const Index = () => {
 
   return (
     <>
+      <style>{`
+        body, html {
+          margin: 0;
+          padding: 0;
+          background-color: #1a1a1a;
+        }
+        body {
+          padding: env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left);
+        }
+      `}</style>
       <link href="https://fonts.googleapis.com/css2?family=Luckiest+Guy&display=swap" rel="stylesheet" />
-      <div className="min-h-screen w-full items-center justify-center flex flex-col bg-[#1a1a1a]">
-      {/* ==== Background Grid Overlay ==== */}
-      <div className="absolute inset-0 z-0 bg-[linear-gradient(to_right,#fafafa,transparent_1px),linear-gradient(to_bottom,#fafafa33_1px,transparent_1px)] bg-[size:20px_20px] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,#000_70%,transparent_100%)] pointer-events-none" />
+      
+      <div className="min-h-screen w-full items-center justify-center flex flex-col bg-[#1a1a1a] relative overflow-hidden">
+        {/* ==== Background Grid Overlay - Now positioned to respect safe area ==== */}
+        <div 
+          className="absolute z-0 bg-[linear-gradient(to_right,#fafafa,transparent_1px),linear-gradient(to_bottom,#fafafa33_1px,transparent_1px)] bg-[size:20px_20px] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,#000_70%,transparent_100%)] pointer-events-none"
+          style={{
+            top: 'env(safe-area-inset-top)',
+            left: 'env(safe-area-inset-left)',
+            right: 'env(safe-area-inset-right)',
+            bottom: 'env(safe-area-inset-bottom)',
+          }}
+        />
+        
         {/* Hero Section */}
         <section className="w-full text-center z-10 relative pt-16 px-4">
           <h1 className="text-5xl md:text-8xl font-bold mb-4 text-[#fafafa] tracking-tight font-luckiest">
@@ -74,6 +94,7 @@ const Index = () => {
             Your cross-platform learning companion. Download Knowlia for Windows, macOS, or Linux and experience seamless education across all your devices.
           </p>
         </section>
+        
         {/* Download Cards */}
         <section className="w-full flex justify-center mb-8">
           <div className="grid gap-y-8 gap-x-6 max-w-7xl w-full pl-6 grid-cols-1 md:grid-cols-3 place-items-center">
