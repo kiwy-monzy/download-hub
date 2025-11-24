@@ -3,7 +3,7 @@ import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Download, Apple, Monitor, Laptop, Check } from "lucide-react";
 import CourseCard from "@/components/DownloadCard";
-
+import AppSlideshow from "@/components/AppSlideshow";
 interface DownloadPlatform {
   platform: string;
   icon: any;
@@ -13,6 +13,16 @@ interface DownloadPlatform {
     recommended: boolean;
   }>;
 }
+
+// Simple App Preview Slideshow Component
+import { useState } from "react";
+const previewImages = [
+  "/images/preview1.png",
+  "/images/preview2.png",
+  "/images/preview3.png",
+];
+
+
 
 const Index = () => {
   const version = "0.1.0";
@@ -108,6 +118,7 @@ const Index = () => {
             ))}
           </div>
         </section>
+
 
         {/* Footer */}
         <footer className="w-full py-8 mt-auto z-10 relative">
