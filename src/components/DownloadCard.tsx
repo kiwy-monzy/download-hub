@@ -191,7 +191,7 @@ const DownloadCard: React.FC<DownloadCardProps> = ({
         </g>
       </g>
     </g>
-    <text id="title" transform="translate(136.623 313.756)" fill="#1a1a1a" fontSize="202" fontFamily="LuckiestGuy-Regular, Luckiest Guy"><tspan x="0" y="0">{platform}</tspan></text>
+    <text id="title" transform="translate(136.623 313.756)" fill="#1a1a1a" fontSize="202" fontFamily="'luckiest-guy-regular', cursive"><tspan x="0" y="0">{platform}</tspan></text>
     <g id="CLIP" transform="translate(1096.825 -85.218)">
       <g id="Group_674" data-name="Group 674" transform="translate(0 125.57)">
         <g id="Group_673" data-name="Group 673" clipPath="url(#clipPath-2)">
@@ -238,14 +238,14 @@ const DownloadCard: React.FC<DownloadCardProps> = ({
         <rect width="1223" height="198" rx="80" stroke="none"/>
         <rect x="0.5" y="0.5" width="1222" height="197" rx="79.5" fill="none"/>
       </g>
-      <text id="title-3" data-name="title" transform="translate(611.5 130)" fill="#fafafa" fontSize="80" fontFamily="LuckiestGuy-Regular, Luckiest Guy" textAnchor="middle"><tspan x="0" y="0">DOWNLOAD: {version64 ? version64.arch : '64-bit'}</tspan></text>
+      <text id="title-3" data-name="title" transform="translate(611.5 130)" fill="#fafafa" fontSize="80" fontFamily="'luckiest-guy-regular', cursive" textAnchor="middle"><tspan x="0" y="0">DOWNLOAD: {version64 ? version64.arch : '64-bit'}</tspan></text>
     </g>
     <g id="_32" data-name="32" transform="translate(136.623 502.3)" onClick={() => handleDownload('32')} onMouseEnter={() => setHover32(true)} onMouseLeave={() => setHover32(false)} style={{ cursor: 'pointer' }}>
       <g id="Rectangle_300" data-name="Rectangle 300" transform="translate(0 0.456)" fill="#ae100f" stroke="#707070" strokeLinecap="round" strokeLinejoin="round"   opacity={hover32 ? "1" : "0.8"}>
         <rect width="1223" height="198" rx="80" stroke="none"/>
         <rect x="0.5" y="0.5" width="1222" height="197" rx="79.5" fill="none"/>
       </g>
-      <text id="title-4" data-name="title" transform="translate(611.5 130.456)" fill="#fafafa" fontSize="80" fontFamily="LuckiestGuy-Regular, Luckiest Guy" textAnchor="middle"><tspan x="0" y="0">DOWNLOAD: {version32 ? version32.arch : '32-bit'}</tspan></text>
+      <text id="title-4" data-name="title" transform="translate(611.5 130.456)" fill="#fafafa" fontSize="80" fontFamily="'luckiest-guy-regular', cursive" textAnchor="middle"><tspan x="0" y="0">DOWNLOAD: {version32 ? version32.arch : '32-bit'}</tspan></text>
     </g>
   </g>
 </svg>

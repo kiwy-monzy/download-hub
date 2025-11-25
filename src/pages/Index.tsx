@@ -33,24 +33,16 @@ const Index = () => {
       platform: "Windows",
       icon: Monitor,
       versions: [
-        { arch: "64-bit", url: "/tauri-build-windows-x64/setup.exe", recommended: true },
-        { arch: "32-bit", url: "/tauri-build-windows-x86/setup.exe", recommended: false }
-      ]
-    },
-    {
-      platform: "macOS",
-      icon: Apple,
-      versions: [
-        { arch: "Apple Silicon (M1/M2)", url: "/tauri-build-macos-arm64/installer.dmg", recommended: true },
-        { arch: "Intel 64-bit", url: "/tauri-build-macos-x64/installer.dmg", recommended: false }
+        { arch: "64-bit", url: "/app//builds/build-windows-x64/Knowlia_0.2.0_x64_en-US.msi", recommended: true },
+        { arch: "32-bit", url: "/app/builds/build-windows-x86Knowlia_0.2.0_x86_en-US.msi", recommended: false }
       ]
     },
     {
       platform: "Linux",
       icon: Laptop,
       versions: [
-        { arch: "64-bit (.deb)", url: "/tauri-build-linux-x64/installer.deb", recommended: true },
-        { arch: "AppImage", url: "/tauri-build-linux-x64/installer.AppImage", recommended: false }
+        { arch: "64-bit(.deb)", url: "/app//builds/build-linux-x64/Knowlia_0.2.0_amd64.deb", recommended: true },
+        { arch: "AppImage", url: "/app//builds/build-linux-x64/Knowlia_0.2.0_amd64.AppImage", recommended: false }
       ]
     }
   ];
@@ -61,7 +53,6 @@ const Index = () => {
       date: "2025-11-23",
       changes: [
         "Initial release: Knowlia app – cross-platform Tauri export for Windows, macOS, and Linux.",
-        "Bundled image/resource: vcontexst."
       ]
     }
   ];
@@ -94,20 +85,23 @@ const Index = () => {
         
         {/* Hero Section */}
         <section className="w-full text-center z-10 relative pt-16 px-4">
-          <h1 className="text-5xl md:text-8xl font-bold mb-4 text-[#fafafa] tracking-tight font-luckiest">
+          <h1 className="text-5xl md:text-8xl font-bold mb-4 text-[#fafafa] tracking-tight font-luckiest-guy">
             K N O W L I A
           </h1>
+          <p className="mt-2 text-2xl md:text-4xl text-[#bcbcbc] font-sister-spray opacity-40">
+            KNOWLEDGE + UTOPIA
+          </p>
           <span {...{variant: "secondary", className: "mb-6 text-sm inline-block text-[#fafafa] bg-[#3a6ea4] px-3 py-1 rounded-full mt-2"} as any}>
             Version {version}
           </span>
           <p className="max-w-2xl mx-auto text-gray-300 text-lg md:text-xl leading-relaxed mt-6 mb-8 px-4">
-            Your cross-platform learning companion. Download Knowlia for Windows, macOS, or Linux and experience seamless education across all your devices.
+            Welcome to Knowlia: where knowledge meets innovation. Experience streamlined course management, intuitive real-time campus navigation, and stress-free organization—all crafted exclusively for COICT students. Built by insiders, designed for your success.
           </p>
         </section>
         
         {/* Download Cards */}
         <section className="w-full flex justify-center mb-8">
-          <div className="grid gap-y-8 gap-x-6 max-w-7xl w-full pl-6 grid-cols-1 md:grid-cols-3 place-items-center">
+          <div className="grid gap-y-8 gap-x-6 max-w-7xl w-full pl-6 grid-cols-1 md:grid-cols-2 place-items-center">
             {(downloads as DownloadPlatform[]).map((platform, idx) => (
               <CourseCard
                 key={platform.platform}
