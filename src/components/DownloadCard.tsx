@@ -17,54 +17,31 @@ const DownloadCard: React.FC<DownloadCardProps> = ({
   icon: Icon,
   versions = [],
 }) => {
-  // Extra-robust workaround for broken environment: fallback manual word splitting.
-  let firstLine = platform.split(' ')[0];
-  let secondLine = platform.split(' ').slice(1).join(' ');
-  const downloadPlatform = platform.split(' ')[1];
+  const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
 
-  // Hover state for download buttons
-  const [hover64, setHover64] = useState(false);
-  const [hover32, setHover32] = useState(false);
+  // Split platform name nicely (e.g., "Windows 10" → "Windows" on first line)
+  const platformParts = platform.trim().split(' ');
+  const firstLine = platformParts[0];
+  const restLine = platformParts.slice(1).join(' ');
 
-  // Find versions for display
-  const version64 = versions.find((v: VersionItem) => {
-    const arch: string = v.arch;
-    return arch.toLowerCase().includes('64');
-  });
-  
-  const version32 = versions.find((v: VersionItem) => {
-    const arch: string = v.arch;
-    return arch.toLowerCase().includes('32');
-  });
+  const handleDownload = (url: string, filename?: string) => {
+    if (!url) return;
 
-  // Function to handle download
-  const handleDownload = (archType: '64' | '32') => {
-    // Find the appropriate version based on architecture
-    const version = versions.find((v: VersionItem) => {
-      const arch: string = v.arch;
-      const archLower = arch.toLowerCase();
-      if (archType === '64') {
-        // For 64-bit, look for "64" in the arch string
-        return archLower.includes('64');
-      } else {
-        // For 32-bit, look for "32" in the arch string
-        return archLower.includes('32');
-      }
-    });
-
-    if (version && version.url) {
-      // Create a temporary anchor element and trigger download
-      const link = document.createElement('a');
-      const url: string = version.url;
-      link.href = url;
-      const urlParts: string[] = url.split('/');
-      link.download = urlParts[urlParts.length - 1] || 'download';
-      document.body.appendChild(link);
-      link.click();
-      document.body.removeChild(link);
-    }
+    const link = document.createElement('a');
+    link.href = url;
+    link.download = filename || url.split('/').pop() || 'download';
+    link.target = '_blank';
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
   };
 
+  // Sort versions: recommended first, then by arch name
+  const sortedVersions = [...versions].sort((a, b) => {
+    if (a.recommended && !b.recommended) return -1;
+    if (!a.recommended && b.recommended) return 1;
+    return a.arch.localeCompare(b.arch);
+  });
   return (
     <div className="pointer-events-auto z-2 w-full  relative">
 <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 1476.121 1035.368">
@@ -233,20 +210,66 @@ const DownloadCard: React.FC<DownloadCardProps> = ({
       <rect width="758" height="23" rx="1" stroke="none"/>
       <rect x="0.5" y="0.5" width="757" height="22" rx="0.5" fill="none"/>
     </g>
-    <g id="_64" data-name="64" transform="translate(136.623 709.756)" onClick={() => handleDownload('64')} onMouseEnter={() => setHover64(true)} onMouseLeave={() => setHover64(false)} style={{ cursor: 'pointer' }}>
-      <g id="Rectangle_301" data-name="Rectangle 301" transform="translate(0 0)" fill="#1a1a1a" stroke="#707070" strokeLinecap="round" strokeLinejoin="round"  opacity={hover64 ? "1" : "0.8"}>
-        <rect width="1223" height="198" rx="80" stroke="none"/>
-        <rect x="0.5" y="0.5" width="1222" height="197" rx="79.5" fill="none"/>
-      </g>
-      <text id="title-3" data-name="title" transform="translate(611.5 130)" fill="#fafafa" fontSize="80" fontFamily="'luckiest-guy-regular', cursive" textAnchor="middle"><tspan x="0" y="0">DOWNLOAD: {version64 ? version64.arch : '64-bit'}</tspan></text>
+{/* Top Line */}
+<rect x="120" y="107.711" width="758" height="23" rx="1" fill="#1a1a1a"/>
+
+{/* Dynamic Download Buttons */}
+{sortedVersions.map((version, index) => {
+  const yOffset = 502.3 + index * 207; // 198 height + spacing
+  const isHovered = hoveredIndex === index;
+  const isRecommended = version.recommended;
+
+  return (
+    <g
+      key={version.arch}
+      transform={`translate(136.623 ${yOffset})`}
+      onClick={() => handleDownload(version.url)}
+      onMouseEnter={() => setHoveredIndex(index)}
+      onMouseLeave={() => setHoveredIndex(null)}
+      style={{ cursor: 'pointer' }}
+    >
+      {/* Button Background */}
+      <rect
+        width="1223"
+        height="198"
+        rx="80"
+        fill={isRecommended ? "#ae100f" : "#1a1a1a"}
+        opacity={isHovered ? "1" : "0.8"}
+        stroke="#707070"
+      />
+
+      {/* Button Text */}
+      <text
+        transform="translate(611.5 130)"
+        fill="#fafafa"
+        fontSize="80"
+        fontFamily="'luckiest-guy-regular', cursive"
+        textAnchor="middle"
+      >
+        <tspan x="0" y="0">
+          DOWNLOAD: {version.arch}
+        </tspan>
+      </text>
+
+      {/* Recommended Badge */}
+      {isRecommended && (
+        <g transform="translate(900, -10)">
+          <rect width="280" height="80" rx="40" fill="#ffcc00"/>
+          <text
+            x="140"
+            y="55"
+            fill="#1a1a1a"
+            fontSize="38"
+            fontFamily="'luckiest-guy-regular', cursive"
+            textAnchor="middle"
+          >
+            RECOMMENDED
+          </text>
+        </g>
+      )}
     </g>
-    <g id="_32" data-name="32" transform="translate(136.623 502.3)" onClick={() => handleDownload('32')} onMouseEnter={() => setHover32(true)} onMouseLeave={() => setHover32(false)} style={{ cursor: 'pointer' }}>
-      <g id="Rectangle_300" data-name="Rectangle 300" transform="translate(0 0.456)" fill="#ae100f" stroke="#707070" strokeLinecap="round" strokeLinejoin="round"   opacity={hover32 ? "1" : "0.8"}>
-        <rect width="1223" height="198" rx="80" stroke="none"/>
-        <rect x="0.5" y="0.5" width="1222" height="197" rx="79.5" fill="none"/>
-      </g>
-      <text id="title-4" data-name="title" transform="translate(611.5 130.456)" fill="#fafafa" fontSize="80" fontFamily="'luckiest-guy-regular', cursive" textAnchor="middle"><tspan x="0" y="0">DOWNLOAD: {version32 ? version32.arch : '32-bit'}</tspan></text>
-    </g>
+  );
+})}
   </g>
 </svg>
     </div>
