@@ -33,8 +33,8 @@ const Index = () => {
       platform: "Windows",
       icon: Monitor,
       versions: [
-        { arch: "64-bit", url: "/app/builds/build-windows-x64/Knowlia_0.2.0_x64_en-US.msi", recommended: true },
-        { arch: "32-bit", url: "/app/builds/build-windows-x86/Knowlia_0.2.0_x86_en-US.msi", recommended: false }
+        { arch: "64-bit", url: "/app/builds/build-windows-x64/Knowlia_0.1.0_x64_en-US.msi", recommended: true },
+        { arch: "32-bit", url: "/app/builds/build-windows-x86/Knowlia_0.1.0_x86_en-US.msi", recommended: false }
       ]
     },
     {
