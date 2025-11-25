@@ -33,16 +33,16 @@ const Index = () => {
       platform: "Windows",
       icon: Monitor,
       versions: [
-        { arch: "64-bit", url: "/app//builds/build-windows-x64/Knowlia_0.2.0_x64_en-US.msi", recommended: true },
-        { arch: "32-bit", url: "/app/builds/build-windows-x86Knowlia_0.2.0_x86_en-US.msi", recommended: false }
+        { arch: "64-bit", url: "/app/builds/build-windows-x64/Knowlia_0.2.0_x64_en-US.msi", recommended: true },
+        { arch: "32-bit", url: "/app/builds/build-windows-x86/Knowlia_0.2.0_x86_en-US.msi", recommended: false }
       ]
     },
     {
       platform: "Linux",
       icon: Laptop,
       versions: [
-        { arch: "64-bit (.deb)", url: "/app//builds/build-linux-x64/Knowlia_0.2.0_amd64.deb", recommended: true },
-        { arch: "AppImage", url: "/app//builds/build-linux-x64/Knowlia_0.2.0_amd64.AppImage", recommended: false }
+        { arch: "64-bit (.deb)", url: "/app/builds/build-linux-x64/Knowlia_0.2.0_amd64.deb", recommended: true },
+        { arch: "AppImage", url: "/app/builds/build-linux-x64/Knowlia_0.2.0_amd64.AppImage", recommended: false }
       ]
     }
   ];
