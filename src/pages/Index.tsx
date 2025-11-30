@@ -25,7 +25,7 @@ const previewImages = [
 
 
 const Index = () => {
-  const version = "0.1.0";
+  const version = "0.1.1";
   const currentYear = new Date().getFullYear();
   
   const downloads: DownloadPlatform[] = [
@@ -33,24 +33,32 @@ const Index = () => {
       platform: "Windows",
       icon: Monitor,
       versions: [
-        { arch: "64-bit", url: "/app/builds/build-windows-x64/Knowlia_0.1.0_x64_en-US.msi", recommended: true },
-        { arch: "32-bit", url: "/app/builds/build-windows-x86/Knowlia_0.1.0_x86_en-US.msi", recommended: false }
+        { arch: "64-bit", url: "/app/builds/build-windows-x64/Knowlia_0.1.1_x64_en-US.msi", recommended: true },
+        { arch: "32-bit", url: "/app/builds/build-windows-x86/Knowlia_0.1.1_x86_en-US.msi", recommended: false }
       ]
     },
     {
       platform: "Linux",
       icon: Laptop,
       versions: [
-        { arch: "64-bit (.deb)", url: "/app/builds/build-linux-x64/Knowlia_0.1.0_amd64.deb", recommended: true },
-        { arch: "AppImage", url: "/app/builds/build-linux-x64/Knowlia_0.1.0_amd64.AppImage", recommended: false }
+        { arch: "64-bit (.deb)", url: "/app/builds/build-linux-x64/Knowlia_0.1.1_amd64.deb", recommended: true },
+        { arch: "AppImage", url: "/app/builds/build-linux-x64/Knowlia_0.1.1_amd64.AppImage", recommended: false }
+      ]
+    },
+    {
+      platform: "macOS",
+      icon: Apple,
+      versions: [
+        { arch: "64-bit", url: "/app/builds/build-macos-x64/Knowlia_0.1.1_x64.dmg", recommended: true },
+        { arch: "M1", url: "/app/builds/build-macos-arm64/Knowlia_0.1.1_aarch64.dmg", recommended: false }
       ]
     }
   ];
 
   const changelog: Array<any> = [
     {
-      version: "0.1.0",
-      date: "2025-11-23",
+      version: "0.1.1",
+      date: "2025-12-01",
       changes: [
         "Initial release: Knowlia app – cross-platform Tauri export for Windows, macOS, and Linux.",
       ]
